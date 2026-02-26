@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="Mavis.LeetCode.csproj" />
-  <Project Path="Mavis.LeetCode.Tests/Mavis.LeetCode.Tests.csproj" Id="a5fffa44-c30f-4849-9e24-964a236088e0" />
+  <Project Path="Mavis.LeetCode.Solutions/Mavis.LeetCode.Solutions.csproj" />
+  <Project Path="Mavis.LeetCode.Tests/Mavis.LeetCode.Tests.csproj" Id="d8dad027-858e-4ac7-afee-2375b4d162d0" />
 </Solution>
