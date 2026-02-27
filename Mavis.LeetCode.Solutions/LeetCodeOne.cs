@@ -2,37 +2,63 @@
 {
     public class LeetCodeOne
     {
-		public void MergeTwoLists(ListNode list1)
-		{
-            ListNode newCurrent = new();
-            ListNode newList = new(list1.val);
-
-            if(list1.next != null)
+        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        {
+            if(list1 == null)
             {
-                newList.next = newCurrent;
-                newList.next.val = list1.next.val;
-                list1 = list1.next.next;
+                return list2;
+            }
+            if(list2 == null)
+            {
+                return list1;
             }
 
-            while(list1 != null)
+            ListNode currentNode = new();
+            ListNode mergedListHead = new();
+            mergedListHead.next = currentNode;
+
+            while (list1 != null)
             {
-                newCurrent.next = new ListNode(list1.val);
-                list1 = list1.next;
-                newCurrent = newCurrent.next;
+                if(list2 == null || list1.val <= list2.val)
+                {
+                    currentNode.val = list1.val;
+                    list1 = list1.next!;
+                    currentNode.next = new ListNode();
+                    currentNode = currentNode.next;
+                }
+                else
+                {
+
+                    currentNode.val = list2.val;
+                    list2 = list2.next!;
+                    currentNode.next = new ListNode();
+                    currentNode = currentNode.next;
+                }
             }
 
-		}
-	}
+            while(list2 != null)
+            {
+                    currentNode.val = list2.val;
+                    list2 = list2.next!;
+                    currentNode.next = new ListNode();
+                    currentNode = currentNode.next;
+            }
 
-	
+            return mergedListHead;
+        }
+    }
+
+
     //Definition for singly-linked list.
-	public class ListNode {
-      public int val;
-      public ListNode? next;
-      public ListNode(int val=0, ListNode? next=null) {
-          this.val = val;
-          this.next = next;
-      }
-  }
- 
+    public class ListNode
+    {
+        public int val;
+        public ListNode? next;
+        public ListNode(int val = 0, ListNode? next = null)
+        {
+            this.val = val;
+            this.next = next;
+        }
+    }
+
 }
