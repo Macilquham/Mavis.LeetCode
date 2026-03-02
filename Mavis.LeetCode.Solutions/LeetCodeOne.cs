@@ -4,11 +4,11 @@
     {
         public ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
-            if(list1 == null)
+            if (list1 == null)
             {
                 return list2;
             }
-            if(list2 == null)
+            if (list2 == null)
             {
                 return list1;
             }
@@ -19,32 +19,37 @@
 
             while (list1 != null)
             {
-                if(list2 == null || list1.val <= list2.val)
+                if (list2 == null || list1.val <= list2.val)
                 {
                     currentNode.val = list1.val;
                     list1 = list1.next!;
-                    currentNode.next = new ListNode();
-                    currentNode = currentNode.next;
                 }
                 else
                 {
-
                     currentNode.val = list2.val;
                     list2 = list2.next!;
+                }
+
+                if (list1 != null || list2 != null)
+                {
                     currentNode.next = new ListNode();
                     currentNode = currentNode.next;
                 }
             }
 
-            while(list2 != null)
+            while (list2 != null)
             {
-                    currentNode.val = list2.val;
-                    list2 = list2.next!;
+                currentNode.val = list2.val;
+                list2 = list2.next!;
+                if (list2 != null)
+                {
                     currentNode.next = new ListNode();
                     currentNode = currentNode.next;
-            }
+                }
 
-            return mergedListHead;
+            }
+            
+            return mergedListHead.next;
         }
     }
 
