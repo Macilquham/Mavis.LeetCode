@@ -1,7 +1,10 @@
 ﻿namespace Mavis.LeetCode.Solutions
 {
 
-    public class LeetCodeTwo
+	/// <summary>
+	/// https://leetcode.com/problems/plus-one
+	/// </summary>
+	public class LeetCodeTwo
     {
         public int[] PlusOne(int[] digits)
         {
