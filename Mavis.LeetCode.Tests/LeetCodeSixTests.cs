@@ -13,7 +13,7 @@ namespace Mavis.LeetCode.Tests
             int result = leetCodeSix.RemoveElement(input, 3);
 			input[2].ShouldBe(3);
 			input[3].ShouldBe(3);
-			//result.ShouldBe(2);
+			result.ShouldBe(2);
 		}
 
 		[Fact]
@@ -25,7 +25,7 @@ namespace Mavis.LeetCode.Tests
 			input[7].ShouldBe(2);
 			input[6].ShouldBe(2);
 			input[5].ShouldBe(2);
-			//result.ShouldBe(5);
+			result.ShouldBe(5);
 		}
 
 		[Fact]
@@ -37,7 +37,7 @@ namespace Mavis.LeetCode.Tests
 			input[2].ShouldBe(2);
 			input[3].ShouldBe(2);
 			input[4].ShouldBe(2);
-			//result.ShouldBe(2);
+			result.ShouldBe(2);
 		}
 
 		[Fact]
@@ -48,7 +48,7 @@ namespace Mavis.LeetCode.Tests
 			int result = leetCodeSix.RemoveElement(input, 2);
 			input[0].ShouldBe(1);
 			input[1].ShouldBe(2);
-			//result.ShouldBe(1);
+			result.ShouldBe(1);
 		}
 
 
@@ -60,7 +60,7 @@ namespace Mavis.LeetCode.Tests
 			int result = leetCodeSix.RemoveElement(input, 2);
 			input[0].ShouldBe(1);
 			input[1].ShouldBe(2);
-			//result.ShouldBe(1);
+			result.ShouldBe(1);
 
 		}
 
@@ -70,7 +70,7 @@ namespace Mavis.LeetCode.Tests
 			var leetCodeSix = new LeetCodeSix();
 			int[] input = [3,3];
 			int result = leetCodeSix.RemoveElement(input, 3);
-			//result.ShouldBe(0);
+			result.ShouldBe(0);
 		}
 
 		[Fact]
@@ -80,7 +80,7 @@ namespace Mavis.LeetCode.Tests
 			int[] input = [1,2,3,4];
 			int result = leetCodeSix.RemoveElement(input, 3);
 			input[3].ShouldBe(3);
-			//result.ShouldBe(3);
+			result.ShouldBe(3);
 			
 		}
 
@@ -94,7 +94,7 @@ namespace Mavis.LeetCode.Tests
 			input[10].ShouldBe(4);
 			input[9].ShouldBe(4);
 			input[8].ShouldBe(4);
-			//result.ShouldBe(8);
+			result.ShouldBe(8);
 		}
 
 		[Fact]
@@ -103,7 +103,7 @@ namespace Mavis.LeetCode.Tests
 			var leetCodeSix = new LeetCodeSix();
 			int[] input = [3,3];
 			int result = leetCodeSix.RemoveElement(input, 5);
-			//result.ShouldBe(2);
+			result.ShouldBe(2);
 		}
 	}
 

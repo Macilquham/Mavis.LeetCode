@@ -8,7 +8,7 @@ namespace Mavis.LeetCode.Solutions
     {
         public int RemoveElement(int[] nums, int val)
         {
-
+            bool hasBeenDecremented = false;
             if(nums.Length == 0){ return 0; }
             
             if(nums.Length == 1)
@@ -16,41 +16,31 @@ namespace Mavis.LeetCode.Solutions
                 return nums[0] == val ? 0 : 1;
             }
 
-            int lowerRangeValIndex = 0;
-            int upperRangeValIndex = nums.Length - 1;
-            bool lowerRangeNeedsSwapping = false;
-            bool upperRangeNeedsSwapping = false;
+            int upperRangeIndex = nums.Length - 1;
 
-            for(int i=0; i < nums.Length / 2 + 1; i++)
+            for(int i=0; i < nums.Length; i++)
             {
-                if (nums[i] == val)
-                {
-                    lowerRangeValIndex = i;
-                    lowerRangeNeedsSwapping = true;
+				if (upperRangeIndex == i)
+				{
+					return hasBeenDecremented ? upperRangeIndex : nums.Length;
 				}
-                if (nums[nums.Length - (i + 1)] != val)
+
+				if (nums[i] == val)
                 {
-                    upperRangeNeedsSwapping = true;
-				}
-                if(nums[nums.Length - (i + 1)] == val)
-                {
-                    if (upperRangeNeedsSwapping)
+					hasBeenDecremented = true;
+					while (nums[upperRangeIndex] == val)
                     {
-                        nums[nums.Length - (i + 1)] = nums[upperRangeValIndex];
-                        nums[upperRangeValIndex] = val;
-                        upperRangeNeedsSwapping = false;
+                        upperRangeIndex--;
+                        
+						if (upperRangeIndex == i)
+						{
+							return upperRangeIndex;
+						}
 					}
 
-					upperRangeValIndex--;
-				}
-
-                if (nums[nums.Length - (i + 1)] != val && lowerRangeNeedsSwapping && lowerRangeValIndex < upperRangeValIndex)
-                {
-                    nums[lowerRangeValIndex] = nums[upperRangeValIndex];
-					nums[upperRangeValIndex] = val;
-                    lowerRangeNeedsSwapping = false;
-                    upperRangeValIndex--;
-				}
+                    nums[i] = nums[upperRangeIndex];
+                    nums[upperRangeIndex] = val;
+                }
             }
 
             return 0;
