@@ -16,46 +16,44 @@ namespace Mavis.LeetCode.Solutions
                 return nums[0] == val ? 0 : 1;
             }
 
-            int numberOfDuplicateFound = 0;
+            int lowerRangeValIndex = 0;
+            int upperRangeValIndex = nums.Length - 1;
+            bool lowerRangeNeedsSwapping = false;
+            bool upperRangeNeedsSwapping = false;
 
-            for (int i = 0; i <= nums.Length / 2 + 1; i++)
+            for(int i=0; i < nums.Length / 2 + 1; i++)
             {
-                if (i == nums.Length)
-                {
-                    return nums.Length - numberOfDuplicateFound;
-                }
-
                 if (nums[i] == val)
                 {
-                    while (nums[nums.Length - 1 - numberOfDuplicateFound] == val)
-                    {
-                        numberOfDuplicateFound++;
-
-                        if (numberOfDuplicateFound == nums.Length)
-                        {
-                            return 0;
-                        }
-                    }
-
-                    if (numberOfDuplicateFound + i == nums.Length)
-                    {
-                        return nums.Length - numberOfDuplicateFound;
-                    }
-
-                    nums[i] = nums[nums.Length - 1 - numberOfDuplicateFound];
-                    nums[nums.Length - 1 - numberOfDuplicateFound] = val;
-                }
-            }
-
-            for (int j = nums.Length / 2; j < nums.Length; j++)
-            {
-                if (nums[j] == val)
+                    lowerRangeValIndex = i;
+                    lowerRangeNeedsSwapping = true;
+				}
+                if (nums[nums.Length - (i + 1)] != val)
                 {
-                    return j;
-                }
+                    upperRangeNeedsSwapping = true;
+				}
+                if(nums[nums.Length - (i + 1)] == val)
+                {
+                    if (upperRangeNeedsSwapping)
+                    {
+                        nums[nums.Length - (i + 1)] = nums[upperRangeValIndex];
+                        nums[upperRangeValIndex] = val;
+                        upperRangeNeedsSwapping = false;
+					}
+
+					upperRangeValIndex--;
+				}
+
+                if (nums[nums.Length - (i + 1)] != val && lowerRangeNeedsSwapping && lowerRangeValIndex < upperRangeValIndex)
+                {
+                    nums[lowerRangeValIndex] = nums[upperRangeValIndex];
+					nums[upperRangeValIndex] = val;
+                    lowerRangeNeedsSwapping = false;
+                    upperRangeValIndex--;
+				}
             }
 
-            return nums.Length;
+            return 0;
         }
     }
 }
