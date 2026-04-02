@@ -105,6 +105,17 @@ namespace Mavis.LeetCode.Tests
 			int result = leetCodeSix.RemoveElement(input, 5);
 			result.ShouldBe(2);
 		}
+
+		[Fact]
+		public void TestTen()
+		{
+			var leetCodeSix = new LeetCodeSix();
+			int[] input = [4,5];
+			int result = leetCodeSix.RemoveElement(input, 5);
+			result.ShouldBe(1);
+			input[0].ShouldBe(4);
+		}
+
 	}
 
 	public record Foo(string Name, string Address);

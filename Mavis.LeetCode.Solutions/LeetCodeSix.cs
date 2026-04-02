@@ -4,11 +4,14 @@ using System.Text;
 
 namespace Mavis.LeetCode.Solutions
 {
-    public class LeetCodeSix
+	/// <summary>
+	/// https://leetcode.com/problems/remove-element/description/
+    ///Ove thought the solution, could be much simpler.
+	/// </summary>
+	public class LeetCodeSix
     {
         public int RemoveElement(int[] nums, int val)
         {
-            bool hasBeenDecremented = false;
             if(nums.Length == 0){ return 0; }
             
             if(nums.Length == 1)
@@ -17,29 +20,34 @@ namespace Mavis.LeetCode.Solutions
             }
 
             int upperRangeIndex = nums.Length - 1;
+            int count = 0;
 
             for(int i=0; i < nums.Length; i++)
             {
 				if (upperRangeIndex == i)
 				{
-					return hasBeenDecremented ? upperRangeIndex : nums.Length;
+                    count = nums[i] != val ? count + 1 : count;
+                    return count;
 				}
 
 				if (nums[i] == val)
                 {
-					hasBeenDecremented = true;
 					while (nums[upperRangeIndex] == val)
                     {
                         upperRangeIndex--;
                         
 						if (upperRangeIndex == i)
 						{
-							return upperRangeIndex;
+							return count;
 						}
 					}
-
-                    nums[i] = nums[upperRangeIndex];
+					count++;
+					nums[i] = nums[upperRangeIndex];
                     nums[upperRangeIndex] = val;
+                }
+                else
+                {
+                    count++;
                 }
             }
 
